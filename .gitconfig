@@ -1,0 +1,10 @@
+[user]
+	name = Charalampos Emmanouilidis
+	email = charalampos.emmanouilidis@philips.com
+
+[difftool]
+    tool = meld
+
+[mergetool]
+    tool = meld
+
