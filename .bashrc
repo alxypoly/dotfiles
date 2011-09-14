@@ -104,6 +104,7 @@ xterm*|rxvt*)
     ;;
 esac
 
+
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
@@ -142,3 +143,5 @@ if [ -f /home/m5/sw/tool/bin/setenvdelphi ] ; then
     . /home/m5/sw/tool/bin/setenvdelphi
 fi
 
+
+export LS_COLORS='di=1;95'
