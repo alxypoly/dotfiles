@@ -1,0 +1,83 @@
+#!/usr/bin/env python
+
+import os
+import sys 
+import traceback 
+
+from glob import glob
+from datetime import datetime
+
+dotfiles_dir = os.path.dirname (os.path.abspath (__file__))
+home_dir     = os.environ['HOME']
+backup_dir   = '%s/dotfiles' % (home_dir)
+backup_date  = str (datetime.now()).split('.')[0].replace(':', '-').replace(' ', '-')
+
+
+class ExitState:
+    Succeeded = 0
+    Failed    = -1
+
+
+def runcmd (cmd):
+    ret = os.system (cmd)
+
+    if ret == 0:
+        return ExitState.Succeeded
+    else:
+        return ExitState.Failed
+
+
+def backup (dotfile):
+    if not os.path.exists (backup_dir):
+        os.mkdir (backup_dir)
+    
+    abs_backup_dir = os.path.normpath ('%s/%s' % (backup_dir, backup_date))
+
+    if not os.path.exists (abs_backup_dir):
+        os.mkdir (abs_backup_dir)
+
+    return runcmd ('cp -a %s %s/.' % (dotfile, abs_backup_dir))
+
+
+
+def is_blacklisted (dotfile):
+
+    if os.path.islink (dotfile):
+        return True
+
+    if os.path.isdir (dotfile) and os.path.basename (dotfile) == '.git':
+        return True
+    
+    if '.swp' in os.path.basename (dotfile):
+        return True
+
+if __name__ == '__main__':
+    exitstate = ExitState.Succeeded
+
+    for dotfile in glob ('%s/.*' % dotfiles_dir):
+        if is_blacklisted (dotfile):
+            continue
+        
+        print 'Install/Update file %s' % os.path.basename (dotfile)
+        try:
+            destfile = '%s/%s' % (home_dir, os.path.basename (dotfile))
+            
+            if os.path.exists (destfile):
+                if backup (destfile) == ExitState.Failed:
+                    raise Exception ('Failed to backup file %s' % destfile)
+
+                runcmd ('rm -rf %s' % destfile)
+
+            runcmd ('cp -a %s %s' % (dotfile, home_dir))
+
+        except Exception, e:
+            print '--------------------------------------------'
+            traceback.print_exc ()
+            print '--------------------------------------------\n'
+            print e
+            exitstate = ExitState.Failed
+            break
+
+    sys.exit (exitstate)
+
+
