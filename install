@@ -66,8 +66,6 @@ if __name__ == '__main__':
                 if backup (destfile) == ExitState.Failed:
                     raise Exception ('Failed to backup file %s' % destfile)
 
-                runcmd ('rm -rf %s' % destfile)
-
             runcmd ('cp -a %s %s' % (dotfile, home_dir))
 
         except Exception, e:
