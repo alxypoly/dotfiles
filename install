@@ -9,8 +9,13 @@ from datetime import datetime
 
 dotfiles_dir = os.path.dirname (os.path.abspath (__file__))
 home_dir     = os.environ['HOME']
-backup_dir   = '%s/dotfiles' % (home_dir)
-backup_date  = str (datetime.now()).split('.')[0].replace(':', '-').replace(' ', '-')
+
+backup_dir           = '%s/dotfiles' % (home_dir)
+backup_folder_prefix = 'dotbackup-'
+backup_date          = str (datetime.now()).split('.')[0].replace(':', '').replace(' ', '').replace('-', '')
+backup_folder        = '%s%s' % (backup_folder_prefix, backup_date)
+backup_info_file     = 'info'
+backup_max_to_keep   = 7
 
 
 class ExitState:
@@ -18,25 +23,56 @@ class ExitState:
     Failed    = -1
 
 
-def runcmd (cmd):
-    ret = os.system (cmd)
+def runcmd (cmd, silent=True):
+    if not silent:
+        print '%s' % cmd
 
+    ret = os.system (cmd)
+    
     if ret == 0:
         return ExitState.Succeeded
     else:
         return ExitState.Failed
 
 
+def cleanup_backup_dir ():
+    backup_dirs = []
+
+    for dir in glob('%s/%s*' % (backup_dir, backup_folder_prefix)):
+        if os.path.isdir (dir) and os.path.exists ('%s/%s' % (dir, backup_info_file)):
+            backup_dirs.append (dir)
+    
+    backup_dirs.sort()
+    if len (backup_dirs) > backup_max_to_keep:
+        for dir in backup_dirs[:len(backup_dirs)-backup_max_to_keep]:
+            runcmd ('rm -rf %s' % dir)
+
+
+
 def backup (dotfile):
+    backupstate = ExitState.Succeeded
+
     if not os.path.exists (backup_dir):
         os.mkdir (backup_dir)
     
-    abs_backup_dir = os.path.normpath ('%s/%s' % (backup_dir, backup_date))
+    abs_backup_dir = os.path.normpath ('%s/%s' % (backup_dir, backup_folder))
 
     if not os.path.exists (abs_backup_dir):
         os.mkdir (abs_backup_dir)
 
-    return runcmd ('cp -a %s %s/.' % (dotfile, abs_backup_dir))
+    backupstate = runcmd ('cp -a %s %s/' % (dotfile, abs_backup_dir))
+    
+    if backupstate == ExitState.Succeeded:
+        readme = open ('%s/README' % abs_backup_dir, 'w')
+        readme.write ('Files in this folder are hidden.\n\nExecute ls -al in order to expose them')
+        readme.close()
+        
+        info = open ('%s/%s' % (abs_backup_dir, backup_info_file), 'w')
+        info.write (str (datetime.now()))
+        info.close()
+
+
+    return backupstate 
 
 
 
@@ -50,6 +86,7 @@ def is_blacklisted (dotfile):
     
     if '.swp' in os.path.basename (dotfile):
         return True
+
 
 if __name__ == '__main__':
     exitstate = ExitState.Succeeded
@@ -76,6 +113,8 @@ if __name__ == '__main__':
             exitstate = ExitState.Failed
             break
 
-    sys.exit (exitstate)
 
+    cleanup_backup_dir()
+
+    sys.exit (exitstate)
 
