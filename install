@@ -64,7 +64,7 @@ def backup (dotfile):
     
     if backupstate == ExitState.Succeeded:
         readme = open ('%s/README' % abs_backup_dir, 'w')
-        readme.write ('Files in this folder are hidden.\n\nExecute ls -al in order to expose them')
+        readme.write ('Files in this folder are hidden.\nExecute ls -al in order to expose them\n')
         readme.close()
         
         info = open ('%s/%s' % (abs_backup_dir, backup_info_file), 'w')
