@@ -104,6 +104,7 @@ autocmd FileType c set omnifunc=ccomplete#CompleteCpp
 " --------------------------------------------------------
 " File Types handling
 " --------------------------------------------------------
+au BufNewFile,BufRead *.wiki setf Wikipedia
 
 " dspm desc files
 au BufRead,BufNewFile *.desc set filetype=dspm
