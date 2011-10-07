@@ -143,5 +143,7 @@ if [ -f /home/m5/sw/tool/bin/setenvdelphi ] ; then
     . /home/m5/sw/tool/bin/setenvdelphi
 fi
 
-
 export LS_COLORS='di=1;95'
+
+function gvim () { /usr/bin/gvim -f $* & }
+
