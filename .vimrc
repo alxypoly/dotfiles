@@ -16,7 +16,6 @@ filetype on
 filetype plugin on
 filetype indent on
 
-
 " --------------------------------------------------------
 " Appearance settings 
 " --------------------------------------------------------
@@ -43,8 +42,8 @@ set shiftwidth=4
 " tab labels show the filename without path(tail)
 set guitablabel=%N/\ %t\ %M
 
-" choose a coding friendly font
-set guifont=Monaco\ 8.6 
+" choose a coding friendly font (Ubuntu 11.10 comes with ubuntu mono font)
+" set guifont=Monaco\ 8.6 
 
 
 " --------------------------------------------------------
@@ -68,7 +67,6 @@ set backspace=indent,eol,start
 ab mkae make
 ab tish this
 ab tihs this
-
 
 " --------------------------------------------------------
 " Search settings 

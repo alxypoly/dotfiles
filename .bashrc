@@ -29,6 +29,7 @@ alias nls="cd /home/m5/sw/nls"
 alias echo="echo -e"
 alias open="gnome-open"
 alias ssh='ssh -XY'
+alias gvim='gvim -f'
 
 #UBUNTU BASHRC
 # ~/.bashrc: executed by bash(1) for non-login shells.
