@@ -30,10 +30,6 @@ alias echo="echo -e"
 alias open="gnome-open"
 alias ssh='ssh -XY'
 
-#export PS1="\w @ \h (\u) \$ "
-#export PS1="[\u@\h \W]\$ "
-
-
 #UBUNTU BASHRC
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
@@ -89,7 +85,7 @@ if [ -n "$force_color_prompt" ]; then
 fi
 
 if [ "$color_prompt" = yes ]; then
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;38m\]\u@\h\[\033[00m\]:\[\033[01;95m\]\w\[\033[00m\]\$ '
 else
     PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
 fi
@@ -143,7 +139,5 @@ if [ -f /home/m5/sw/tool/bin/setenvdelphi ] ; then
     . /home/m5/sw/tool/bin/setenvdelphi
 fi
 
+
 export LS_COLORS='di=1;95'
-
-function gvim () { /usr/bin/gvim -f $* & }
-
