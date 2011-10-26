@@ -208,3 +208,15 @@ NSXMLDocumentContentKind
 NSXMLNodeKind
 NSXMLParserError
 NSZone
+UIAccelerationValue
+UIAccessibilityNotifications
+UIAccessibilityTraits
+UIControlEvents
+UIControlState
+UIDataDetectorTypes
+UIEdgeInsets
+UIImagePickerControllerSourceType
+UITableViewCellStateMask
+UIViewAutoresizing
+UIWebViewNavigationType
+UIWindowLevel
