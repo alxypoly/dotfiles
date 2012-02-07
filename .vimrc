@@ -33,7 +33,7 @@ set ruler								" line numbers and column the cursor is on
 set number								" Show line numbering
 set showcmd
 
-set scrolloff=3							" Keep 3 lines below and above the cursor
+set scrolloff=999						" Setting 'scrolloff' to a large value causes the cursor to stay in the middle line when possible
 set numberwidth=1						" Use 1 col + 1 space for numbers
 set bs=2
 set tabstop=4
