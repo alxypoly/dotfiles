@@ -42,8 +42,11 @@ set shiftwidth=4
 " tab labels show the filename without path(tail)
 set guitablabel=%N/\ %t\ %M
 
+" remove toolbar widget
+set guioptions-=T
+
 " choose a coding friendly font (Ubuntu 11.10 comes with ubuntu mono font)
-" set guifont=Monaco\ 8.6 
+set guifont=Ubuntu\ Mono\ 12
 
 
 " --------------------------------------------------------
