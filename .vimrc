@@ -33,7 +33,7 @@ set ruler								" line numbers and column the cursor is on
 set number								" Show line numbering
 set showcmd
 
-set scrolloff=999						" Setting 'scrolloff' to a large value causes the cursor to stay in the middle line when possible
+set scrolloff=6						" Setting 'scrolloff' to a large value causes the cursor to stay in the middle line when possible
 set numberwidth=1						" Use 1 col + 1 space for numbers
 set bs=2
 set tabstop=4
@@ -88,28 +88,26 @@ set smartcase
 
 
 " --------------------------------------------------------
-" Omni Completion settings 
+" Omni Completion settings (disable since to avoid confict with pymode rope plugin) 
 " --------------------------------------------------------
-let OmniCpp_NamespaceSearch = 1
-let OmniCpp_GlobalScopeSearch = 1
-let OmniCpp_ShowAccess = 1
-let OmniCpp_ShowPrototypeInAbbr = 1 " show function parameters
-let OmniCpp_MayCompleteDot = 1 " autocomplete after .
-let OmniCpp_MayCompleteArrow = 1 " autocomplete after ->
-let OmniCpp_MayCompleteScope = 1 " autocomplete after ::
-let OmniCpp_DefaultNamespaces = ["std", "_GLIBCXX_STD"]
-" automatically open and close the popup menu / preview window
-au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
-set completeopt=menuone,menu,longest
-
-
-"let OmniCpp_ShowScopeInAbbr = 1
-let OmniCpp_ShowPrototypeInAbbr = 1
-let OmniCpp_MayCompleteScope = 1
-
-autocmd FileType python set omnifunc=pythoncomplete#Complete
-autocmd FileType c set omnifunc=ccomplete#Complete
-"autocmd FileType python compiler pylint
+"let OmniCpp_NamespaceSearch = 1
+"let OmniCpp_GlobalScopeSearch = 1
+"let OmniCpp_ShowAccess = 1
+"let OmniCpp_ShowPrototypeInAbbr = 1 " show function parameters
+"let OmniCpp_MayCompleteDot = 1 " autocomplete after .
+"let OmniCpp_MayCompleteArrow = 1 " autocomplete after ->
+"let OmniCpp_MayCompleteScope = 1 " autocomplete after ::
+"let OmniCpp_DefaultNamespaces = ["std", "_GLIBCXX_STD"]
+"" automatically open and close the popup menu / preview window
+"au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
+"set completeopt=menuone,menu,longest
+"
+""let OmniCpp_ShowScopeInAbbr = 1
+"let OmniCpp_ShowPrototypeInAbbr = 1
+"let OmniCpp_MayCompleteScope = 1
+"
+"autocmd FileType python set omnifunc=pythoncomplete#Complete
+"autocmd FileType c set omnifunc=ccomplete#Complete
 
 
 " --------------------------------------------------------
@@ -138,3 +136,42 @@ au BufReadCmd *.dfs call zip#Browse(expand("<amatch>"))
 
 " makefile template files
 au BufRead,BufNewFile *.Mf set filetype=make
+
+" --------------------------------------------------------
+" Settings for Pythonistas
+" --------------------------------------------------------
+
+"Pathogen load
+filetype off 
+call pathogen#infect()
+call pathogen#helptags()
+
+filetype plugin indent on
+syntax on 
+
+" Load pylint code plugin
+let g:pymode_lint = 1
+
+" Switch pylint, pyflakes, pep8, mccabe code-checkers
+" Can have multiply values "pep8,pyflakes,mcccabe"
+let g:pymode_lint_checker = "pyflakes,pep8,mccabe"
+
+" Disable pylint checking every save 
+let g:pymode_lint_write = 0
+
+" Load run code plugin 
+let g:pymode_run = 1
+
+" Set key 'R' for run python code 
+let g:pymode_run_key = 'R'
+
+" Hold cursor in current window
+" when quickfix is open
+let g:pymode_lint_hold = 0
+
+" Place error signs
+let g:pymode_lint_signs = 1
+
+" disable automatic python folding
+let g:pymode_folding=0 
+
