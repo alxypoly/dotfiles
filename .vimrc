@@ -45,8 +45,7 @@ set guitablabel=%N/\ %t\ %M
 " remove toolbar widget
 set guioptions-=T
 
-" choose a coding friendly font (Ubuntu 11.10 comes with ubuntu mono font)
-set guifont=Ubuntu\ Mono\ 12
+set guifont=Monaco\ 8.6
 
 
 " --------------------------------------------------------
