@@ -114,9 +114,9 @@ set smartcase
 " --------------------------------------------------------
 au BufNewFile,BufRead *.wiki setf Wikipedia
 
-" dspm desc files
-au BufRead,BufNewFile *.desc set filetype=dspm
-au! Syntax newlang source $HOME/.vim/syntax/dspm.vim
+" morbal desc files
+au BufRead,BufNewFile *.desc set filetype=morbal
+au! Syntax newlang source $HOME/.vim/syntax/morbal.vim
 
 " dspm metafile 
 au BufRead,BufNewFile *.mfs set filetype=metafile

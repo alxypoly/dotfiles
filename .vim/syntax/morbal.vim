@@ -25,7 +25,7 @@ endif
 syn keyword dspmFunction        GET_HANDLE SET_HANDLE ARRAY ARRAY_MEMBER MEMBER SET GET UPDATE MEMBER STANDARD VARSIZE VARSIZE_GET VARSIZE_SET COPY VARSIZE_MEMBER UPDATE_ARRAY_FULL_COMP DEFAULT_ADDRESS_AND_ID DEFAULT REFERENCE HANDLE
 
 syn keyword dspmClass           class managed property end remote method event
-syn keyword dspmKey             factory classid include cppinclude constructor create read write type comment parameter
+syn keyword dspmKey             factory classid include cppinclude constructor create read write type comment parameter return
 syn region  dspmString          matchgroup=dspmStringDelimiter start="\"" end="\"" skip="\\\\\|\\\""
 syn keyword dspmInt             SaVisualGrid16 ScaleRangeSpec16 SaCalData16 i_16 i_32 u_16 u_32 MdilTextId MDIL_FLOAT Color 
 
