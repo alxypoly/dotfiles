@@ -9,9 +9,9 @@ export DDD=gdb
 export http_proxy="http://pixs00.bbl.ms.philips.com:8080"
 export https_proxy="http://pixs00.bbl.ms.philips.com:8080"
 export ftp_proxy="http://pixs00.bbl.ms.philips.com:8080"
+export PAGER="~/bin/vimpager"
 
 alias wremove="wremove -A"
-
 alias ls="ls --color"
 alias ll="ls -hl"
 #alias modules="cd /home/m5/sw/modules/sources"
@@ -30,6 +30,8 @@ alias echo="echo -e"
 alias open="gnome-open"
 alias ssh='ssh -XY'
 alias gvim='gvim -f'
+alias less=$PAGER
+alias zless=$PAGER
 
 #UBUNTU BASHRC
 # ~/.bashrc: executed by bash(1) for non-login shells.

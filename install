@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 
 import os
-import sys 
-import traceback 
+import sys
+import traceback
 
 from glob import glob
 from datetime import datetime
@@ -28,7 +28,7 @@ def runcmd (cmd, silent=True):
         print '%s' % cmd
 
     ret = os.system (cmd)
-    
+
     if ret == 0:
         return ExitState.Succeeded
     else:
@@ -41,7 +41,7 @@ def cleanup_backup_dir ():
     for dir in glob('%s/%s*' % (backup_dir, backup_folder_prefix)):
         if os.path.isdir (dir) and os.path.exists ('%s/%s' % (dir, backup_info_file)):
             backup_dirs.append (dir)
-    
+
     backup_dirs.sort()
     if len (backup_dirs) > backup_max_to_keep:
         for dir in backup_dirs[:len(backup_dirs)-backup_max_to_keep]:
@@ -54,25 +54,25 @@ def backup (dotfile):
 
     if not os.path.exists (backup_dir):
         os.mkdir (backup_dir)
-    
+
     abs_backup_dir = os.path.normpath ('%s/%s' % (backup_dir, backup_folder))
 
     if not os.path.exists (abs_backup_dir):
         os.mkdir (abs_backup_dir)
 
     backupstate = runcmd ('cp -a %s %s/' % (dotfile, abs_backup_dir))
-    
+
     if backupstate == ExitState.Succeeded:
         readme = open ('%s/README' % abs_backup_dir, 'w')
         readme.write ('Files in this folder are hidden.\nExecute ls -al in order to expose them\n')
         readme.close()
-        
+
         info = open ('%s/%s' % (abs_backup_dir, backup_info_file), 'w')
         info.write (str (datetime.now()))
         info.close()
 
 
-    return backupstate 
+    return backupstate
 
 
 
@@ -83,7 +83,7 @@ def is_blacklisted (dotfile):
 
     if os.path.isdir (dotfile) and os.path.basename (dotfile) == '.git':
         return True
-    
+
     if '.swp' in os.path.basename (dotfile):
         return True
 
@@ -91,14 +91,18 @@ def is_blacklisted (dotfile):
 if __name__ == '__main__':
     exitstate = ExitState.Succeeded
 
+
+    print "Install dependencies for dotfiles"
+    runcmd ('cd dependencies ; ./install')
+
     for dotfile in glob ('%s/.*' % dotfiles_dir):
         if is_blacklisted (dotfile):
             continue
-        
+
         print 'Install/Update file %s' % os.path.basename (dotfile)
         try:
             destfile = '%s/%s' % (home_dir, os.path.basename (dotfile))
-            
+
             if os.path.exists (destfile):
                 if backup (destfile) == ExitState.Failed:
                     raise Exception ('Failed to backup file %s' % destfile)
