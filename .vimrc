@@ -59,6 +59,7 @@ set smartindent
 set tabpagemax=20
 set showmatch 
 
+
 " enable some nice non-compliant vim features. 
 set nocp
 
@@ -87,36 +88,13 @@ set smartcase
 
 
 " --------------------------------------------------------
-" Omni Completion settings (disable since to avoid confict with pymode rope plugin) 
-" --------------------------------------------------------
-"let OmniCpp_NamespaceSearch = 1
-"let OmniCpp_GlobalScopeSearch = 1
-"let OmniCpp_ShowAccess = 1
-"let OmniCpp_ShowPrototypeInAbbr = 1 " show function parameters
-"let OmniCpp_MayCompleteDot = 1 " autocomplete after .
-"let OmniCpp_MayCompleteArrow = 1 " autocomplete after ->
-"let OmniCpp_MayCompleteScope = 1 " autocomplete after ::
-"let OmniCpp_DefaultNamespaces = ["std", "_GLIBCXX_STD"]
-"" automatically open and close the popup menu / preview window
-"au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
-"set completeopt=menuone,menu,longest
-"
-""let OmniCpp_ShowScopeInAbbr = 1
-"let OmniCpp_ShowPrototypeInAbbr = 1
-"let OmniCpp_MayCompleteScope = 1
-"
-"autocmd FileType python set omnifunc=pythoncomplete#Complete
-"autocmd FileType c set omnifunc=ccomplete#Complete
-
-
-" --------------------------------------------------------
 " File Types handling
 " --------------------------------------------------------
 au BufNewFile,BufRead *.wiki setf Wikipedia
 
-" morbal desc files
-au BufRead,BufNewFile *.desc set filetype=morbal
-au! Syntax newlang source $HOME/.vim/syntax/morbal.vim
+" dspm desc files
+au BufRead,BufNewFile *.desc set filetype=dspm
+au! Syntax newlang source $HOME/.vim/syntax/dspm.vim
 
 " dspm metafile 
 au BufRead,BufNewFile *.mfs set filetype=metafile
@@ -171,6 +149,13 @@ let g:pymode_lint_signs = 1
 " disable automatic python folding
 let g:pymode_folding=0 
 
+
+
+
+" --------------------------------------------------------
+" Testarea for Vim settings.  
+" --------------------------------------------------------
+
 " Enable mouse support for all modes
 set mouse=a
 
@@ -178,5 +163,8 @@ set mouse=a
 map <F11> :set invpaste<CR>
 set pastetoggle=<F11>
 
+" highlight lines larger than 80 characters 
+highlight OverLength ctermbg=red ctermfg=white guibg=#592929
+match OverLength /\%81v.\+/
 
 
