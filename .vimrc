@@ -29,12 +29,12 @@ colorscheme molokai
 
 " editor settings
 set cursorline
-set ruler								" line numbers and column the cursor is on
-set number								" Show line numbering
+set ruler							" line numbers and column the cursor is on
+set number							" Show line numbering
 set showcmd
 
-set scrolloff=3							" Keep 3 lines below and above the cursor
-set numberwidth=1						" Use 1 col + 1 space for numbers
+set scrolloff=3						" Keep 3 lines below and above the cursor
+set numberwidth=1					" Use 1 col + 1 space for numbers
 set bs=2
 set tabstop=4
 set shiftwidth=4
