@@ -8,3 +8,5 @@
 [mergetool]
     tool = meld
 
+[color]
+    ui = true
