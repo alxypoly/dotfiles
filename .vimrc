@@ -156,15 +156,7 @@ let g:pymode_folding=0
 " Testarea for Vim settings.  
 " --------------------------------------------------------
 
-" Enable mouse support for all modes
-set mouse=a
-
-" F11 to toggle paste mode
-map <F11> :set invpaste<CR>
-set pastetoggle=<F11>
-
 " highlight lines larger than 80 characters 
 highlight OverLength ctermbg=red ctermfg=white guibg=#592929
 match OverLength /\%81v.\+/
-
 
