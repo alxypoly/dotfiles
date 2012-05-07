@@ -3,4 +3,11 @@
 tar -xvzf rkitover-vimpager-1.6.8-0-g7a5aae7.tar.gz
 cd rkitover-vimpager-7a5aae7
 make install PREFIX=$HOME
+cd ..
+
+tar -xvzf clang_complete.tar.gz
+cd clang_complete
+make install
+cd ..
+
 
