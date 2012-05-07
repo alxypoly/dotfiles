@@ -151,7 +151,6 @@ let g:pymode_folding=0
 
 
 
-
 " --------------------------------------------------------
 " Testarea for Vim settings.  
 " --------------------------------------------------------
@@ -159,4 +158,9 @@ let g:pymode_folding=0
 " highlight lines larger than 80 characters 
 highlight OverLength ctermbg=red ctermfg=white guibg=#592929
 match OverLength /\%81v.\+/
+
+let g:clang_complete_auto = 0
+let g:clang_complete_copen = 1
+let g:clang_use_library = 1
+let g:clang_auto_user_options='path, .clang_complete'
 
