@@ -32,6 +32,7 @@ alias ssh='ssh -XY'
 alias gvim='gvim -f'
 alias less=$PAGER
 alias zless=$PAGER
+alias make="make -j 8"
 
 #UBUNTU BASHRC
 # ~/.bashrc: executed by bash(1) for non-login shells.
