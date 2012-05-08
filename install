@@ -77,20 +77,21 @@ def backup (dotfile):
 
 
 def is_blacklisted (dotfile):
+    blacklist = [
+        '.git',
+        '.gitignore',
+        '.swp',
+    ]
 
-    if os.path.islink (dotfile):
+    if os.path.islink (dotfile) or os.path.basename(dotfile) in blacklist:
         return True
 
-    if os.path.isdir (dotfile) and os.path.basename (dotfile) == '.git':
-        return True
+    return False
 
-    if '.swp' in os.path.basename (dotfile):
-        return True
 
 
 if __name__ == '__main__':
     exitstate = ExitState.Succeeded
-
 
     print "Install dependencies for dotfiles"
     runcmd ('cd dependencies ; ./install')
