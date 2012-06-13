@@ -94,7 +94,10 @@ if __name__ == '__main__':
     exitstate = ExitState.Succeeded
 
     print "Install dependencies for dotfiles"
-    runcmd ('cd dependencies ; ./install')
+    runcmd('cd dependencies ; ./install')
+
+    print "Install scripts"
+    runcmd('cd bin; ./install')
 
     for dotfile in glob ('%s/.*' % dotfiles_dir):
         if is_blacklisted (dotfile):

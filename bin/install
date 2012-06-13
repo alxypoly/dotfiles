@@ -1,0 +1,13 @@
+#!/usr/bin/env python
+import os
+from glob import glob
+
+installscript = os.path.abspath(__file__)
+bindir = os.path.dirname(installscript)
+
+for f in glob(os.path.join(bindir, '*')):
+    if os.path.abspath(f) == installscript:
+        continue
+
+    os.system('install -v %s $HOME/bin/' % f)
+
