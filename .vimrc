@@ -165,7 +165,7 @@ let g:pymode_rope_guess_project = 0
 highlight OverLength ctermbg=red ctermfg=white guibg=#592929
 match OverLength /\%80v.\+/
 
+" code completion using clang
 let g:clang_complete_auto = 1
-let g:clang_user_options='|| exit 0'
+let g:clang_user_options = '|| exit 0'
 let g:clang_use_library = 1
-

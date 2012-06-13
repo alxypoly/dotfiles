@@ -147,7 +147,7 @@ if __name__ == '__main__':
             destfile = '%s/%s' % (home_dir, os.path.basename (dotfile))
 
             if os.path.exists (destfile):
-                if backup (destfile) == ExitState.Failed:
+                if backup(destfile) == ExitState.Failed:
                     raise Exception ('Failed to backup file %s' % destfile)
 
             runcmd ('cp -a %s %s' % (dotfile, home_dir))
