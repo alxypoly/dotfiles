@@ -6,5 +6,6 @@ cd ..
 
 cd clang_complete
 make install
+make clean
 cd ..
 
