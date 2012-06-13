@@ -72,6 +72,12 @@ def backup (dotfile):
         info.close()
 
 
+    if backupstate == ExitState.Succeeded:
+        if os.path.isfile(dotfile):
+            os.system('rm -f %s' % dotfile)
+        elif os.path.isdir(dotfile):
+            os.system('rm -rf %s' % dotfile)
+
     return backupstate
 
 
