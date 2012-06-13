@@ -81,6 +81,7 @@ def is_blacklisted (dotfile):
         '.git',
         '.gitignore',
         '.swp',
+        '.ropeproject'
     ]
 
     if os.path.islink (dotfile) or os.path.basename(dotfile) in blacklist:
