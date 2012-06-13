@@ -89,6 +89,38 @@ def is_blacklisted (dotfile):
     return False
 
 
+def update_gitconfig():
+    home = os.environ['HOME']
+    username = ''
+    email = ''
+    gitconfig = os.path.join(home, '.gitconfig')
+
+    if os.path.exists(gitconfig):
+        user = os.environ['USER']
+        try:
+            cmd = 'cat /etc/passwd | grep ^%s' % user
+            username = os.popen(cmd).read().split(':')[4].strip()
+            if 'account' in username:
+                username = username.split('account')[1]
+            if 'Account' in username:
+                username = username.split('Account')[1]
+        except Exception, e:
+            print e
+
+        try:
+            cmd = 'cat /etc/aliases | grep ^%s' % user
+            email = os.popen(cmd).read().split(':')[1].strip()
+        except Exception, e:
+            print e
+
+        content = ''.join(open(gitconfig, 'r').readlines())
+        content = content.replace('__username__', username)
+        content = content.replace('__email__', email)
+
+        fh = open(gitconfig, 'w')
+        fh.write(content)
+        fh.close()
+
 
 if __name__ == '__main__':
     exitstate = ExitState.Succeeded
@@ -121,7 +153,7 @@ if __name__ == '__main__':
             exitstate = ExitState.Failed
             break
 
-
+    update_gitconfig()
     cleanup_backup_dir()
 
     sys.exit (exitstate)

@@ -1,6 +1,6 @@
 [user]
-	name = Charalampos Emmanouilidis
-	email = charalampos.emmanouilidis@philips.com
+	name = __username__ 
+	email = __email__
 
 [difftool]
     tool = meld
