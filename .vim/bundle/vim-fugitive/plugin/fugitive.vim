@@ -100,7 +100,7 @@ let s:abstract_prototype = {}
 " Initialization {{{1
 
 function! fugitive#is_git_dir(path) abort
-  let path = a:path . '/'
+  let path = s:sub(a:path, '[\/]$', '') . '/'
   return isdirectory(path.'objects') && isdirectory(path.'refs') && getfsize(path.'HEAD') > 10
 endfunction
 
@@ -119,7 +119,9 @@ function! fugitive#extract_git_dir(path) abort
       return resolve(dir)
     elseif type !=# '' && filereadable(dir)
       let line = get(readfile(dir, '', 1), 0, '')
-      if line =~# '^gitdir: ' && fugitive#is_git_dir(line[8:-1])
+      if line =~# '^gitdir: \.' && fugitive#is_git_dir(root.'/'.line[8:-1])
+        return simplify(root.'/'.line[8:-1])
+      elseif line =~# '^gitdir: ' && fugitive#is_git_dir(line[8:-1])
         return line[8:-1]
       endif
     elseif fugitive#is_git_dir(root)
@@ -206,7 +208,11 @@ function! s:repo_configured_tree() dict abort
       endif
     endif
   endif
-  return self._tree
+  if self._tree =~# '^\.'
+    return simplify(self.dir(self._tree))
+  else
+    return self._tree
+  endif
 endfunction
 
 function! s:repo_tree(...) dict abort
@@ -2051,7 +2057,7 @@ function! s:BufWriteIndexFile()
     let info = old_mode.' '.sha1.' '.stage."\t".path
     call writefile([info],tmp)
     if has('win32')
-      let error = system('type '.tmp.'|'.s:repo().git_command('update-index','--index-info'))
+      let error = system('type '.s:gsub(tmp,'/','\\').'|'.s:repo().git_command('update-index','--index-info'))
     else
       let error = system(s:repo().git_command('update-index','--index-info').' < '.tmp)
     endif
