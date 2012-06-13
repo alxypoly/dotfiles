@@ -149,6 +149,12 @@ let g:pymode_lint_signs = 1
 " disable automatic python folding
 let g:pymode_folding=0 
 
+" disable rope refactoring module, it's too slow
+let g:pymode_rope = 0
+
+" Disable g:pymode_rope_guess_project to make rope always create 
+" .ropeproject in current dir.
+let g:pymode_rope_guess_project = 0
 
 
 " --------------------------------------------------------
