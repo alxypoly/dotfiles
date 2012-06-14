@@ -7,3 +7,6 @@
 [submodule ".vim/bundle/python-mode"]
 	path = .vim/bundle/python-mode
 	url = https://github.com/klen/python-mode.git
+[submodule "dependencies/rednose"]
+	path = dependencies/rednose
+	url = https://github.com/gfxmonk/rednose.git

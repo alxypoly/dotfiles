@@ -9,4 +9,4 @@ make install
 make clean
 cd ..
 
-easy_install --user rednose-0.1.4.tar.gz
+easy_install --user rednose
