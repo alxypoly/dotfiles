@@ -10,3 +10,6 @@
 [submodule "dependencies/rednose"]
 	path = dependencies/rednose
 	url = https://github.com/gfxmonk/rednose.git
+[submodule "dependencies/termstyle"]
+	path = dependencies/termstyle
+	url = https://github.com/gfxmonk/termstyle.git

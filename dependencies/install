@@ -9,4 +9,12 @@ make install
 make clean
 cd ..
 
-easy_install --user rednose
+cd termstyle
+python setup.py build
+python setup.py install --user
+cd ..
+
+cd rednose
+python setup.py build
+python setup.py install --user
+cd ..
