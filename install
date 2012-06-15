@@ -108,10 +108,8 @@ def update_gitconfig():
         try:
             cmd = 'cat /etc/passwd | grep ^%s' % user
             username = os.popen(cmd).read().split(':')[4].strip()
-            if 'account' in username:
-                username = username.split('account')[1]
-            if 'Account' in username:
-                username = username.split('Account')[1]
+            if username.startswith('Personal account of '):
+                username = username.split('Personal account of ')[1]
         except Exception, e:
             print e
 
