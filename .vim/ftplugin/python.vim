@@ -358,7 +358,7 @@ endif
 let b:current_syntax = "python"
 
 
-" highlight lines larger than 80 characters 
+" highlight lines larger than 79 characters 
 highlight OverLength ctermbg=red ctermfg=white guibg=#592929
-match OverLength /\%80v.\+/
+match OverLength /\%79v.\+/
 
