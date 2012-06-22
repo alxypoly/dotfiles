@@ -170,9 +170,6 @@ let g:pymode_rope_guess_project = 0
 " Testarea for Vim settings.  
 " --------------------------------------------------------
 
-" highlight lines larger than 80 characters 
-highlight OverLength ctermbg=red ctermfg=white guibg=#592929
-match OverLength /\%80v.\+/
 
 " code completion using clang
 let g:clang_complete_auto = 1

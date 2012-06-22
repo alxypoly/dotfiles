@@ -9,7 +9,7 @@ export DDD=gdb
 export http_proxy="http://pixs00.bbl.ms.philips.com:8080"
 export https_proxy="http://pixs00.bbl.ms.philips.com:8080"
 export ftp_proxy="http://pixs00.bbl.ms.philips.com:8080"
-export PAGER="~/bin/vimpager"
+export PAGER="vimpager"
 export NOSE_REDNOSE=1
 
 alias wremove="wremove -A"

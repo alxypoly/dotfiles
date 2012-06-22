@@ -356,3 +356,9 @@ if version >= 508 || !exists("did_python_syn_inits")
 endif
 
 let b:current_syntax = "python"
+
+
+" highlight lines larger than 80 characters 
+highlight OverLength ctermbg=red ctermfg=white guibg=#592929
+match OverLength /\%80v.\+/
+
