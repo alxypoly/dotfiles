@@ -170,6 +170,14 @@ let g:pymode_rope_guess_project = 0
 " Testarea for Vim settings.  
 " --------------------------------------------------------
 
+" change cursor stile if you are in edit mode
+" (works for linux only!)
+if has("autocmd")
+    au InsertEnter * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Default/cursor_shape ibeam"
+    au InsertLeave * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Default/cursor_shape block"
+    au VimLeave * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Default/cursor_shape block"
+endif
+
 
 " code completion using clang
 let g:clang_complete_auto = 1
