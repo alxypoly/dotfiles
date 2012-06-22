@@ -114,6 +114,15 @@ au BufReadCmd *.dfs call zip#Browse(expand("<amatch>"))
 " makefile template files
 au BufRead,BufNewFile *.Mf set filetype=make
 
+
+" --------------------------------------------------------
+" Handy Stuff
+" --------------------------------------------------------
+
+" Resize splits when the window is resized
+au VimResized * exe "normal! \<c-w>="
+
+
 " --------------------------------------------------------
 " Settings for Pythonistas
 " --------------------------------------------------------
