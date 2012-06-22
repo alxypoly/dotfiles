@@ -104,7 +104,7 @@ def update_gitconfig():
     gitconfig = os.path.join(home, '.gitconfig')
 
     if os.path.exists(gitconfig):
-        user = os.environ['USER']
+        user = os.environ['LOGNAME']
         try:
             cmd = 'cat /etc/passwd | grep ^%s' % user
             username = os.popen(cmd).read().split(':')[4].strip()
