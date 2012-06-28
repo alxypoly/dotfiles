@@ -170,6 +170,11 @@ let g:pymode_rope_guess_project = 0
 " Testarea for Vim settings.  
 " --------------------------------------------------------
 
+map <C-e> <esc>$
+map <C-a> <esc>^
+imap <C-e> <esc>$a
+imap <C-a> <esc>^i
+
 " change cursor stile if you are in edit mode
 " (works for linux only!)
 if has("autocmd")
