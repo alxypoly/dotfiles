@@ -26,7 +26,7 @@ syntax on
 "set t_Co=256
 "let g:molokai_original = 0 
 "colorscheme molokai
-colorscheme clean 
+colorscheme vylight
 
 " editor settings
 set cursorline
@@ -170,6 +170,11 @@ let g:pymode_rope_guess_project = 0
 " --------------------------------------------------------
 " Testarea for Vim settings.  
 " --------------------------------------------------------
+
+map <C-e> <esc>$
+map <C-a> <esc>^
+imap <C-e> <esc>$a
+imap <C-a> <esc>^i
 
 " change cursor stile if you are in edit mode
 " (works for linux only!)
