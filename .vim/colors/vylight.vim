@@ -1,8 +1,8 @@
 "
 " Vim colour file
 "
-" Maintainer:  Vy-Shane Sin Fat <shane@node.mu>
-" Version:     1.4
+" Maintainer:  Charalampos Emmanouilidis 
+" Version:     1.0
 "
 " This colour file is meant for GUI use.
 "
@@ -15,10 +15,10 @@ endif
 let g:colors_name="vylight"
 
 
-hi Normal        guifg=#111111  guibg=white
+hi Normal        guifg=#424242  guibg=#f5f6f6
 hi Title         guifg=black    guibg=white
 hi Cursor                       guibg=#FF7311
-hi LineNr        guifg=#bebebe  guibg=#f8f8f8
+hi LineNr        guifg=#bebebe  guibg=#f5f6f6
 hi Visual                       guibg=#bbddff
 hi NonText       guifg=#fafafa  guibg=#fafafa
 hi StatusLine    guifg=#222222  guibg=#eeeeee  gui=none
@@ -45,18 +45,32 @@ endif
 
 
 " Syntax highlighting 
-hi Comment       guifg=#777777  gui=none
-hi Todo          guifg=#446644  guibg=#ddeecc  gui=italic
+" hi Comment       guifg=#777777  gui=none
+" hi Todo          guifg=#446644  guibg=#ddeecc  gui=italic
+" hi Operator      guifg=#1a1a1a  gui=none
+" hi Identifier    guifg=#1a1a1a  gui=none
+" hi Statement     guifg=#1a1a1a  gui=none
+" hi Type          guifg=#0050b0  gui=none
+" hi Constant      guifg=#204070  gui=none
+" hi Conditional   guifg=#006633  gui=none
+" hi Delimiter     guifg=#1a1a1a  gui=none
+" hi PreProc       guifg=#006633  gui=none
+" hi Special       guifg=#006633  gui=none
+" hi Keyword       guifg=#007050  gui=none
+
+hi Comment       guifg=#c4c6bd  gui=italic
+hi Todo          guifg=#446644  gui=italic
 hi Operator      guifg=#1a1a1a  gui=none
-hi Identifier    guifg=#1a1a1a  gui=none
-hi Statement     guifg=#1a1a1a  gui=none
-hi Type          guifg=#0050b0  gui=none
-hi Constant      guifg=#204070  gui=none
-hi Conditional   guifg=#006633  gui=none
-hi Delimiter     guifg=#1a1a1a  gui=none
-hi PreProc       guifg=#006633  gui=none
-hi Special       guifg=#006633  gui=none
-hi Keyword       guifg=#007050  gui=none
+hi Identifier    guifg=#1a1a1a  gui=bold
+hi Statement     guifg=#424242  gui=bold
+hi Type          guifg=#424242  gui=bold
+hi Constant      guifg=#737470  gui=none
+hi Conditional   guifg=#424242  gui=bold
+hi Delimiter     guifg=#424242  gui=bold
+hi PreProc       guifg=#424242  gui=bold
+hi Special       guifg=#424242  gui=bold
+hi Keyword       guifg=#424242  gui=bold
+
 
 hi link Function        Normal
 hi link Character       Constant

@@ -21,12 +21,15 @@ filetype indent on
 " --------------------------------------------------------
 syntax on
 
+"TODO: foobar
+"
+
 " colorscheme molokai
 "set bg=dark
 "set t_Co=256
 "let g:molokai_original = 0 
 "colorscheme molokai
-colorscheme vylight
+colorscheme vylight  
 
 " editor settings
 set cursorline
@@ -46,7 +49,7 @@ set guitablabel=%N/\ %t\ %M
 " remove toolbar widget
 set guioptions-=T
 
-set guifont=Monaco\ 8.6
+set guifont=Ubuntu\ Mono\ 11
 
 
 " --------------------------------------------------------
@@ -170,11 +173,6 @@ let g:pymode_rope_guess_project = 0
 " --------------------------------------------------------
 " Testarea for Vim settings.  
 " --------------------------------------------------------
-
-map <C-e> <esc>$
-map <C-a> <esc>^
-imap <C-e> <esc>$a
-imap <C-a> <esc>^i
 
 " change cursor stile if you are in edit mode
 " (works for linux only!)
