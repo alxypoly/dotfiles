@@ -86,7 +86,8 @@ fi
 
 if [ "$color_prompt" = yes ]; then
     #http://www.mahner.org/posts/git-branch-im-bash-prompt-anzeigen/
-    PS1='\[\033[01;37m\]\u@\h\[\033[01;95m\] \w\[\033[1;33m\]$(__git_ps1 " (%s)")\[\033[01;95m\]$\[\033[00m\] '
+    #PS1='\[\033[01;37m\]\u@\h\[\033[01;95m\] \w\[\033[1;33m\]$(__git_ps1 " (%s)")\[\033[01;95m\]$\[\033[00m\] '
+    PS1='\u@\h \[\033[1;30m\]\w $(__git_ps1 "(%s)")$\[\033[00m\] '
 else
     PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
 fi
@@ -135,10 +136,6 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
 
-
 if [ -f /home/m5/sw/tool/bin/setenvdelphi ] ; then
     . /home/m5/sw/tool/bin/setenvdelphi
 fi
-
-
-export LS_COLORS='di=1;95'
