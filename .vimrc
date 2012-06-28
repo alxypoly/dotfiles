@@ -26,7 +26,7 @@ syntax on
 "set t_Co=256
 "let g:molokai_original = 0 
 "colorscheme molokai
-colorscheme vylight
+colorscheme clean 
 
 " editor settings
 set cursorline
