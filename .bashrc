@@ -1,5 +1,5 @@
 
-ping -c 1 intellivue.bbl.ms.philips.com && pgn_network=yes
+ping -c 1 intellivue.bbl.ms.philips.com > /dev/null 2>&1 && pgn_network=yes
 if [ "$pgn_network" = yes ]; then
     export DDD=gdb
     export http_proxy="http://pixs00.bbl.ms.philips.com:8080"
