@@ -37,19 +37,19 @@ if version >= 700
   hi PmenuSel    guifg=white    guibg=#3585ef  gui=bold
   hi PmenuSbar   guifg=#d0d5dd  guibg=#e0e5ee  gui=bold
   hi PmenuThumb  guifg=#e0e5ee  guibg=#c0c5dd  gui=bold
-  hi Search                     guibg=#fcfcaa  gui=none
-  hi IncSearch                  guibg=#ffff33  gui=bold
+  hi Search                     guibg=#d75faf  gui=none
+  hi IncSearch                  guibg=#d0d5dd  gui=none
   hi CursorLine                 guibg=#f1faff
   hi ColorColumn                guibg=#fafafa
 endif
 
-hi Comment       guifg=#c4c6bd  gui=italic
-hi Todo          guifg=#446644  gui=italic
-hi Operator      guifg=#1a1a1a  gui=none
-hi Identifier    guifg=#1a1a1a  gui=bold
+hi Comment       guifg=#bcbcbc  gui=italic
+hi Todo          guifg=#d75faf  guibg=#e4e4e4 gui=italic
+hi Operator      guifg=#585858  gui=none
+hi Identifier    guifg=#585858  gui=bold
 hi Statement     guifg=#424242  gui=bold
 hi Type          guifg=#424242  gui=bold
-hi Constant      guifg=#737470  gui=none
+hi Constant      guifg=#767676  gui=none
 hi Conditional   guifg=#424242  gui=bold
 hi Delimiter     guifg=#424242  gui=bold
 hi PreProc       guifg=#424242  gui=bold
@@ -61,9 +61,9 @@ hi Keyword       guifg=#424242  gui=bold
 " Support for 256-color terminal
 "
 if &t_Co > 255
-   hi String          ctermfg=black
+   hi String          ctermfg=238
    hi Conditional     ctermfg=239               cterm=bold
-   hi Constant        ctermfg=DarkGray          cterm=none
+   hi Constant        ctermfg=243               cterm=none
    hi Cursor          ctermfg=16  ctermbg=253
    hi Debug           ctermfg=225               cterm=bold
    hi Delimiter       ctermfg=241
@@ -75,20 +75,19 @@ if &t_Co > 255
 
    hi Error           ctermfg=219 ctermbg=89
    hi ErrorMsg        ctermfg=199 ctermbg=16    cterm=bold
-   hi FoldColumn      ctermfg=67  ctermbg=16
    hi Folded          ctermfg=67  ctermbg=16
-   hi Identifier      ctermfg=208               cterm=none
+   hi Identifier      ctermfg=240             cterm=bold
    hi Ignore          ctermfg=244 ctermbg=232
-   hi IncSearch       ctermfg=193 ctermbg=16
+   hi IncSearch       ctermfg=169 ctermbg=16
 
-   hi Keyword         ctermfg=black             cterm=bold
-   hi Macro           ctermfg=black
-   hi SpecialKey      ctermfg=black
+   hi Keyword         ctermfg=238             cterm=bold
+   hi Macro           ctermfg=238
+   hi SpecialKey      ctermfg=238
 
    hi MatchParen      ctermfg=16  ctermbg=208 cterm=bold
    hi ModeMsg         ctermfg=229
    hi MoreMsg         ctermfg=229
-   hi Operator        ctermfg=161
+   hi Operator        ctermfg=240 cterm=none
 
    " complete menu
    hi Pmenu           ctermfg=81  ctermbg=16
@@ -96,29 +95,29 @@ if &t_Co > 255
    hi PmenuSbar                   ctermbg=232
    hi PmenuThumb      ctermfg=81
 
-   hi PreProc         ctermfg=black cterm=bold
-   hi Search          ctermfg=253 ctermbg=66
+   hi PreProc         ctermfg=238 cterm=bold
+   hi Search          ctermfg=16 ctermbg=169
 
    " marks column
-   hi Special         ctermfg=black  cterm=bold
+   hi Special         ctermfg=238  cterm=bold
 
-   hi Statement       ctermfg=black              cterm=bold
+   hi Statement       ctermfg=238              cterm=bold
    hi StatusLine      ctermfg=238 ctermbg=253
    hi StatusLineNC    ctermfg=244 ctermbg=232
-   hi Structure       ctermfg=81
+   hi Structure       ctermfg=238
    hi Title           ctermfg=166
-   hi Todo            ctermfg=231 ctermbg=232   cterm=bold
-   hi Type            ctermfg=black             cterm=bold
+   hi Todo            ctermfg=169 ctermbg=254 cterm=bold
+   hi Type            ctermfg=238              cterm=bold
 
-   hi VertSplit       ctermfg=244 ctermbg=244   
+   hi VertSplit       ctermfg=250 ctermbg=250
    hi VisualNOS                   ctermbg=238
-   hi Visual                      ctermbg=237
+   hi Visual                      ctermbg=169
    hi WarningMsg      ctermfg=231 ctermbg=238   cterm=bold
    hi WildMenu        ctermfg=81  ctermbg=16
 
-   hi Normal          ctermfg=black ctermbg=none
-   hi Comment         ctermfg=59  ctermbg=none
-   hi CursorLine                  ctermbg=none  cterm=underline
+   hi Normal          ctermfg=238 ctermbg=none
+   hi Comment         ctermfg=250  ctermbg=none
+   hi CursorLine                  ctermbg=none  cterm=none
    hi CursorColumn                ctermbg=none
    hi LineNr          ctermfg=250 ctermbg=none
    hi NonText         ctermfg=250 ctermbg=none
