@@ -84,7 +84,7 @@ if &t_Co > 255
    hi Macro           ctermfg=238
    hi SpecialKey      ctermfg=238
 
-   hi MatchParen      ctermfg=16  ctermbg=208 cterm=bold
+   hi MatchParen      ctermfg=16  ctermbg=250 cterm=none
    hi ModeMsg         ctermfg=229
    hi MoreMsg         ctermfg=229
    hi Operator        ctermfg=240 cterm=none
