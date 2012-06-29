@@ -62,9 +62,9 @@ hi Keyword       guifg=#424242  gui=bold
 "
 if &t_Co > 255
    hi String          ctermfg=238
-   hi Conditional     ctermfg=239               cterm=bold
-   hi Constant        ctermfg=243               cterm=none
-   hi Cursor          ctermfg=16  ctermbg=253
+   hi Conditional     ctermfg=240               cterm=bold
+   hi Constant        ctermfg=240               cterm=none
+   hi Cursor          ctermfg=16  ctermbg=240
    hi Debug           ctermfg=225               cterm=bold
    hi Delimiter       ctermfg=241
 
