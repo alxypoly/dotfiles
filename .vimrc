@@ -49,7 +49,7 @@ set guitablabel=%N/\ %t\ %M
 " remove toolbar widget
 set guioptions-=T
 
-set guifont=Ubuntu\ Mono\ 11
+set guifont=Cousine\ 10
 
 
 " --------------------------------------------------------
