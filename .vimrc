@@ -51,6 +51,9 @@ set guioptions-=T
 
 set guifont=Cousine\ 10
 
+set ttyfast " u got a fast terminal
+set ttyscroll=3
+set lazyredraw " to avoid scrolling problems
 
 " --------------------------------------------------------
 " Behaviour settings
