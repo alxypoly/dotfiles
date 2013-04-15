@@ -116,7 +116,7 @@ au BufReadCmd *.docx,*.xlsx,*.pptx call zip#Browse(expand("<amatch>"))
 au BufReadCmd *.odt,*.ott,*.ods,*.ots,*.odp,*.otp,*.odg,*.otg call zip#Browse(expand("<amatch>"))
 
 " delphi file system package
-au BufReadCmd *.dfs call zip#Browse(expand("<amatch>"))
+au BufReadCmd *.dfs call tar#Browse(expand("<amatch>"))
 
 " makefile template files
 au BufRead,BufNewFile *.Mf set filetype=make
