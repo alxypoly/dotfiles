@@ -84,6 +84,8 @@ ab tihs this
 
 " Remove marked matches after search command
 nnoremap <CR> :nohlsearch<CR>/<BS><CR>
+nnoremap <C-b> :!make delphi<CR>
+nnoremap <C-r> :silent !gnome-terminal -x sh -c 'make run'&<CR>
 
 " Highlight search terms...
 set hlsearch
