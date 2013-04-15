@@ -3,7 +3,7 @@
 import sys
 import re
 
-highlight_build = [ 
+highlight_build = [
     '(E|e)rror(s?)',
     '(F|f)ailed',
 ]
@@ -14,22 +14,24 @@ highlight_pep8 = [
 
 __locals__ = locals()
 
+
 def get_pattern(config):
     wordlist = ""
     highlight_config = 'highlight_%s' % config
-    
+
     if (highlight_config) in __locals__:
         wordlist = __locals__[highlight_config]
-    else: 
+    else:
         wordlist = config.split()
-     
+
     pattern = '|'.join(wordlist)
-    return pattern 
+    return pattern
+
 
 def highlight_text(text, pattern):
     def replacement_funk(matchobj):
-        return '\x1b[42m%s\x1b[0m'%matchobj.group(0)
-    
+        return '\x1b[42m%s\x1b[0m' % matchobj.group(0)
+
     return re.sub(pattern, replacement_funk, text)
 
 if __name__ == '__main__':
@@ -45,4 +47,3 @@ if __name__ == '__main__':
 
     for text in input.readlines():
         print highlight_text(text, pattern),
-
