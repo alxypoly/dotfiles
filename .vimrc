@@ -163,7 +163,7 @@ let g:pymode_lint = 1
 let g:pymode_lint_checker = "pyflakes,pep8,mccabe"
 
 " Disable pylint checking every save 
-let g:pymode_lint_write = 0
+let g:pymode_lint_write = 1 
 
 " Load run code plugin 
 let g:pymode_run = 1
