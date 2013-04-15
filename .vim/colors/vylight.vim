@@ -62,9 +62,9 @@ hi Keyword       guifg=#424242  gui=bold
 "
 if &t_Co > 255
    hi String          ctermfg=238
-   hi Conditional     ctermfg=239               cterm=bold
-   hi Constant        ctermfg=243               cterm=none
-   hi Cursor          ctermfg=16  ctermbg=253
+   hi Conditional     ctermfg=240               cterm=bold
+   hi Constant        ctermfg=240               cterm=none
+   hi Cursor          ctermfg=16  ctermbg=240
    hi Debug           ctermfg=225               cterm=bold
    hi Delimiter       ctermfg=241
 
@@ -84,7 +84,7 @@ if &t_Co > 255
    hi Macro           ctermfg=238
    hi SpecialKey      ctermfg=238
 
-   hi MatchParen      ctermfg=16  ctermbg=208 cterm=bold
+   hi MatchParen      ctermfg=16  ctermbg=250 cterm=none
    hi ModeMsg         ctermfg=229
    hi MoreMsg         ctermfg=229
    hi Operator        ctermfg=240 cterm=none
@@ -116,9 +116,8 @@ if &t_Co > 255
    hi WildMenu        ctermfg=81  ctermbg=16
 
    hi Normal          ctermfg=238 ctermbg=none
-   hi Comment         ctermfg=250  ctermbg=none
-   hi CursorLine                  ctermbg=none  cterm=none
-   hi CursorColumn                ctermbg=none
+   hi Comment         ctermfg=250 ctermbg=none
+   hi CursorLine      ctermfg=32  ctermbg=none  cterm=none
    hi LineNr          ctermfg=250 ctermbg=none
    hi NonText         ctermfg=250 ctermbg=none
 end
