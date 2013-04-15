@@ -123,6 +123,17 @@ au BufReadCmd *.dfs call tar#Browse(expand("<amatch>"))
 " makefile template files
 au BufRead,BufNewFile *.Mf set filetype=make
 
+" Beautify C/C++ files
+function! BeautifyCPPFiles()
+    :silent !beautify.py '%:p' > /dev/null 2>&1
+    :e
+    :syntax on
+endfunction
+
+autocmd! bufwritepost *.cpp :call BeautifyCPPFiles()
+autocmd! bufwritepost *.hpp :call BeautifyCPPFiles()
+autocmd! bufwritepost *.c   :call BeautifyCPPFiles()
+autocmd! bufwritepost *.h   :call BeautifyCPPFiles()
 
 " --------------------------------------------------------
 " Handy Stuff
