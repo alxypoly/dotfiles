@@ -85,7 +85,7 @@ ab tihs this
 " Remove marked matches after search command
 nnoremap <CR> :nohlsearch<CR>/<BS><CR>
 nnoremap <C-b> :!make<CR>
-nnoremap <C-r> :silent !gnome-terminal -x sh -c 'make run'&<CR>
+nnoremap <C-r> :silent !gnome-terminal -x sh -c 'make run ; read a'&<CR>
 
 " Highlight search terms...
 set hlsearch
