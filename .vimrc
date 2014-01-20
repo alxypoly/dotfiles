@@ -25,11 +25,11 @@ syntax on
 "
 
 " colorscheme molokai
-"set bg=dark
-"set t_Co=256
-"let g:molokai_original = 0 
-"colorscheme molokai
-colorscheme vylight  
+set bg=dark
+set t_Co=256
+let g:molokai_original = 0 
+colorscheme molokai
+"colorscheme vylight  
 
 " editor settings
 set cursorline
@@ -85,7 +85,6 @@ ab tihs this
 " Remove marked matches after search command
 nnoremap <CR> :nohlsearch<CR>/<BS><CR>
 nnoremap <C-b> :!make<CR>
-nnoremap <C-r> :silent !gnome-terminal -x sh -c 'make run ; read a'&<CR>
 
 " Highlight search terms...
 set hlsearch
@@ -161,6 +160,10 @@ let g:pymode_lint = 1
 " Switch pylint, pyflakes, pep8, mccabe code-checkers
 " Can have multiply values "pep8,pyflakes,mcccabe"
 let g:pymode_lint_checker = "pyflakes,pep8,mccabe"
+
+" Skip errors and warnings
+" W901 = method is too complex
+let g:pymode_lint_ignore = "W901"
 
 " Disable pylint checking every save 
 let g:pymode_lint_write = 1 

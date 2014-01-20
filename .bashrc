@@ -76,7 +76,7 @@ fi
 
 if [ "$color_prompt" = yes ]; then
     #http://www.mahner.org/posts/git-branch-im-bash-prompt-anzeigen/
-    PS1='\[\033[1;30m\]\u@\h \[\033[1;00m\]\w\[\033[1;30m\]$(__git_ps1 " (%s)")$\[\033[00m\] '
+    PS1='\[\033[01;37m\]\u@\h\[\033[01;95m\] \w\[\033[1;33m\]$(__git_ps1 " (%s)")\[\033[01;95m\]$\[\033[00m\] '
 else
     PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
 fi
