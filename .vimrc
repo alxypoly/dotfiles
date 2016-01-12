@@ -1,4 +1,3 @@
-
 " --------------------------------------------------------
 " General settings 
 " --------------------------------------------------------
@@ -12,71 +11,50 @@ autocmd BufRead *
 " File-type highlighting and configuration.
 " Run :filetype (without args) to see what you may have
 " to turn on yourself, or just set them all to be sure.
-filetype on
-filetype plugin on
-filetype indent on
-
-" --------------------------------------------------------
+filetype plugin indent on
+" -----------------------------------------------------------------------------
 " Appearance settings 
-" --------------------------------------------------------
-syntax on
+" -----------------------------------------------------------------------------
 
-"TODO: foobar
-"
+" Colorscheme solarized and font Monaco
+syntax enable                  " Enable syntax highlighting.
+set background=dark            " Change to light if you are on the other side
+colorscheme solarized
 
-" colorscheme molokai
-set bg=dark
-set t_Co=256
-let g:molokai_original = 0 
-colorscheme molokai
-"colorscheme vylight  
+" Editor settings
+set ruler                      " Line numbers and column the cursor is on
+set number                     " Show line numbering
+set showcmd                    " Show information in bottom line
+set cmdheight=2                " give more space for displaying messages
+set scrolloff=3                " Keep 3 lines below and above the cursor
+set numberwidth=1              " Use 1 col + 1 space for numbers
+set tabstop=4                  " Set space characters when the tab key is pressed
+" Try to see if filetype indent on functions correctly
+"set shiftwidth=4               " Set 4 space characters for indentation
 
-" editor settings
-set cursorline
-set ruler							" line numbers and column the cursor is on
-set number							" Show line numbering
-set showcmd
+" GUI settings
+set guitablabel=%N/\ %t\ %M    " tab labels show the filename without path(tail)
+set guioptions-=T              " remove toolbar widget 
+set guifont=Monaco\ 11         " My favorite font    
 
-set scrolloff=3						" Keep 3 lines below and above the cursor
-set numberwidth=1					" Use 1 col + 1 space for numbers
-set bs=2
-set tabstop=4
-set shiftwidth=4
-
-" tab labels show the filename without path(tail)
-set guitablabel=%N/\ %t\ %M
-
-" remove toolbar widget
-set guioptions-=T
-
-set guifont=Cousine\ 10
-
-set ttyfast " u got a fast terminal
-set ttyscroll=3
-set lazyredraw " to avoid scrolling problems
-
-" --------------------------------------------------------
+" -----------------------------------------------------------------------------
 " Behaviour settings
-" --------------------------------------------------------
-set nocompatible
-set expandtab
+" -----------------------------------------------------------------------------
+set guicursor=a:blinkon0       " Switch off cursor blinking
+set backspace=2                " Make backspace work like most other apps    
+set expandtab                  " insert space characters when the tab is pressed
+set tabpagemax=20              " Max tabs thah can be opened
+set showmatch                  " Show matching Parenthesis, brackets and braces 
+set nocompatible               " enable some nice non-compliant vim features.
+set ttyfast                    " U got a fast terminal
+set lazyredraw                 " to avoid scrolling problems
+set novisualbell               " Stop anoying audio bell
+set t_vb=
+
+" Auto identation
 set autoindent
 set cindent
 set smartindent
-set tabpagemax=20
-set showmatch 
-
-
-" enable some nice non-compliant vim features. 
-set nocp
-
-" Intuitive backspacing in insert mode
-set backspace=indent,eol,start
-
-"Some vertipper :)
-ab mkae make
-ab tish this
-ab tihs this
 
 " --------------------------------------------------------
 " Search settings 
@@ -94,19 +72,10 @@ set incsearch " ...dynamically as they are typed.
 set ignorecase 
 set smartcase
 
-
 " --------------------------------------------------------
 " File Types handling
 " --------------------------------------------------------
 au BufNewFile,BufRead *.wiki setf Wikipedia
-
-" dspm desc files
-au BufRead,BufNewFile *.desc set filetype=dspm
-au! Syntax newlang source $HOME/.vim/syntax/dspm.vim
-
-" dspm metafile 
-au BufRead,BufNewFile *.mfs set filetype=metafile
-au! Syntax newlang source $HOME/.vim/syntax/metafile.vim
 
 " scons files
 autocmd BufReadPre SConstruct set filetype=python
@@ -123,16 +92,22 @@ au BufReadCmd *.dfs call tar#Browse(expand("<amatch>"))
 au BufRead,BufNewFile *.Mf set filetype=make
 
 " Beautify C/C++ files
-function! BeautifyCPPFiles()
-    :silent !beautify.py '%:p' > /dev/null 2>&1
-    :e
-    :syntax on
-endfunction
+"function! BeautifyCPPFiles()
+"    :silent !beautify.py '%:p' > /dev/null 2>&1
+"    :e
+"    :syntax on
+"endfunction
+"
+"autocmd! bufwritepost *.cpp :call BeautifyCPPFiles()
+"autocmd! bufwritepost *.hpp :call BeautifyCPPFiles()
+"autocmd! bufwritepost *.c   :call BeautifyCPPFiles()
+"autocmd! bufwritepost *.h   :call BeautifyCPPFiles()
 
-autocmd! bufwritepost *.cpp :call BeautifyCPPFiles()
-autocmd! bufwritepost *.hpp :call BeautifyCPPFiles()
-autocmd! bufwritepost *.c   :call BeautifyCPPFiles()
-autocmd! bufwritepost *.h   :call BeautifyCPPFiles()
+" Setup omnicompletion
+autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
+autocmd FileType css set omnifunc=csscomplete#CompleteCSS
+autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
 
 " --------------------------------------------------------
 " Handy Stuff
@@ -140,7 +115,6 @@ autocmd! bufwritepost *.h   :call BeautifyCPPFiles()
 
 " Resize splits when the window is resized
 au VimResized * exe "normal! \<c-w>="
-
 
 " --------------------------------------------------------
 " Settings for Pythonistas
@@ -188,25 +162,53 @@ let g:pymode_rope = 0
 " .ropeproject in current dir.
 let g:pymode_rope_guess_project = 0
 
+" --------------------------------------------------------
+" Hex Editing  
+" --------------------------------------------------------
+
+" Toggle between Hex and Bin with F8
+noremap <F8> :call HexMe()<CR>
+
+let $in_hex=0
+function HexMe()
+    set binary
+    set noeol
+    if $in_hex>0
+        :%!xxd -r
+        let $in_hex=0
+    else
+        :%!xxd -g 1
+        let $in_hex=1
+    endif
+endfunction
+
+noremap <F7> :%!xxd -r<CR>
 
 " --------------------------------------------------------
 " Testarea for Vim settings.  
 " --------------------------------------------------------
-map <C-e> <esc>$
-map <C-a> <esc>^
-imap <C-e> <esc>$a
-imap <C-a> <esc>^i
+
+" code completion using clang
+let g:clang_auto_select=1
+let g:clang_complete_auto=1
+let g:clang_complete_copen=1
+let g:clang_hl_errors=1
+let g:clang_periodic_quickfix=0
+let g:clang_snippets=1
+let g:clang_snippets_engine="clang_complete"
+let g:clang_conceal_snippets=1
+let g:clang_exec="clang"
+let g:clang_user_options = '|| exit 0'
+let g:clang_auto_user_options="path, .clang_complete"
+let g:clang_use_library=1
+let g:clang_library_path="/usr/lib/"
+let g:clang_sort_algo="priority"
+let g:clang_complete_macros=1
+let g:clang_complete_patterns=0
+
+" always open quickfix window for grep results
+autocmd QuickFixCmdPost *grep* cwindow
 
 " change cursor stile if you are in edit mode
 " (works for linux only!)
-if has("autocmd")
-    au InsertEnter * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Default/cursor_shape ibeam"
-    au InsertLeave * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Default/cursor_shape block"
-    au VimLeave * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Default/cursor_shape block"
-endif
-
-
-" code completion using clang
-let g:clang_complete_auto = 1
-let g:clang_user_options = '|| exit 0'
-let g:clang_use_library = 1
+" TODO
