@@ -36,8 +36,7 @@
  set scrolloff=3                " Keep 3 lines below and above the cursor
  set numberwidth=1              " Use 1 col + 1 space for numbers
  set tabstop=4                  " Set space characters when the tab key is pressed
- " Try to see if filetype indent on functions correctly
- "set shiftwidth=4               " Set 4 space characters for indentation
+ set shiftwidth=4               " Set 4 space characters for indentation
  
  " GUI settings
  set guitablabel=%N/\ %t\ %M    " tab labels show the filename without path(tail)
@@ -135,35 +134,18 @@
  " Map 'F10' to the command 'Display Next Item' from 'F10' output list
  map <F10> :cn<CR>
  map! <F10> :cn<CR>
- 
- " Make shift-insert work like in Xterm
- map <S-Insert> <MiddleMouse>
- map! <S-Insert> <MiddleMouse>
 
 " -----------------------------------------------------------------------------
 " File Types handling
 " -----------------------------------------------------------------------------
  au BufNewFile,BufRead *.wiki setf Wikipedia
  
- " scons files
- autocmd BufReadPre SConstruct set filetype=python
- autocmd BufReadPre SConscript set filetype=python
- 
  " open office files
  au BufReadCmd *.docx,*.xlsx,*.pptx call zip#Browse(expand("<amatch>"))                            
  au BufReadCmd *.odt,*.ott,*.ods,*.ots,*.odp,*.otp,*.odg,*.otg call zip#Browse(expand("<amatch>"))
  
- " delphi file system package
- au BufReadCmd *.dfs call tar#Browse(expand("<amatch>"))
- 
  " makefile template files
  au BufRead,BufNewFile *.Mf set filetype=make
-
- " Setup omnicompletion
- autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
- autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
- autocmd FileType css set omnifunc=csscomplete#CompleteCSS
- autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
 
 " -----------------------------------------------------------------------------
 " Hex Editing  

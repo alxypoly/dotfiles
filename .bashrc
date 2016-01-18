@@ -1,30 +1,14 @@
+for rc in `ls ~/.bash_* | grep -v history | grep -v logout`;
+do
+    source $rc 
+done 
 
-ping -c 1 intellivue.bbl.ms.philips.com > /dev/null 2>&1 && pgn_network=yes
-if [ "$pgn_network" = yes ]; then
-    export DDD=gdb
-    export http_proxy="http://pixs00.bbl.ms.philips.com:8080"
-    export https_proxy="http://pixs00.bbl.ms.philips.com:8080"
-    export ftp_proxy="http://pixs00.bbl.ms.philips.com:8080"
-    alias wremove="wremove -A"
+if [ -d ~/bin ]; then 
+    export PATH=~/bin:$PATH
+fi
 
-    if [ -f /home/m5/sw/tool/bin/setenvdelphi ] ; then
-        . /home/m5/sw/tool/bin/setenvdelphi
-    fi
-fi 
-
-export EDITOR=vim
+export EDITOR=gvim
 export PAGER="vimpager"
-export NOSE_REDNOSE=1
-
-alias ls="ls --color"
-alias ll="ls -hl"
-alias echo="echo -e"
-alias open="gnome-open"
-alias ssh='ssh -XY'
-alias gvim='gvim -f'
-alias less=$PAGER
-alias zless=$PAGER
-alias make="make -j 8"
 
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
@@ -82,6 +66,14 @@ else
 fi
 unset color_prompt force_color_prompt
 
+# Alias definitions.
+alias echo="echo -e"
+alias open="gnome-open"
+alias ssh='ssh -XY'
+alias gvim='gvim $@ &> /dev/null'
+alias less=$PAGER
+alias zless=$PAGER
+alias make="make -s DBG=x"
 
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
@@ -100,15 +92,6 @@ alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
 
-# Alias definitions.
-# You may want to put all your additions into a separate file like
-# ~/.bash_aliases, instead of adding them here directly.
-# See /usr/share/doc/bash-doc/examples in the bash-doc package.
-
-if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
-fi
-
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
@@ -116,3 +99,9 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
 
+# You may want to put all your additions into a separate file like
+# ~/.bash_aliases, instead of adding them here directly.
+# See /usr/share/doc/bash-doc/examples in the bash-doc package.
+#if [ -f ~/.bash_aliases ]; then
+#    . ~/.bash_aliases
+#fi
