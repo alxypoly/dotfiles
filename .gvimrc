@@ -53,8 +53,10 @@
  set nocompatible               " enable some nice non-compliant vim features.
  set ttyfast                    " U got a fast terminal
  set lazyredraw                 " to avoid scrolling problems
- set novisualbell               " Stop anoying audio bell
- set t_vb=
+
+" Stop anoying audio bell
+ set noerrorbells visualbell t_vb=
+ autocmd GUIEnter * set visualbell t_vb=
  
  " Auto identation
  set autoindent
@@ -135,6 +137,7 @@
  map <F10> :cn<CR>
  map! <F10> :cn<CR>
 
+ map <F5> :let &background = ( &background == "dark"? "light" : "dark" )<CR>
 " -----------------------------------------------------------------------------
 " File Types handling
 " -----------------------------------------------------------------------------
