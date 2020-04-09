@@ -68,7 +68,7 @@ unset color_prompt force_color_prompt
 
 # Alias definitions.
 alias echo="echo -e"
-alias open="gnome-open"
+alias open="gvfs-open"
 alias ssh='ssh -XY'
 alias gvim='gvim $@ &> /dev/null'
 alias less=$PAGER
@@ -92,6 +92,14 @@ alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
 
+# for tmux: export 256color
+if [ -n "$TMUX" ]; then
+    case $COLORTERM in
+        Terminal) export TERM=screen-256color ;;         # this is XFCE Terminal
+        gnome-terminal) export TERM=screen-256color ;;   # this is gnome-terminal
+    esac
+fi   
+
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
@@ -105,3 +113,4 @@ fi
 #if [ -f ~/.bash_aliases ]; then
 #    . ~/.bash_aliases
 #fi
+source /opt/devops/etc/bashrc
